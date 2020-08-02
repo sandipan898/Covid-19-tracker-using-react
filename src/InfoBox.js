@@ -11,7 +11,7 @@ function InputBox({ title, cases, total }) {
             {title}
           </Typography>
           {/* No of Cases */}
-          <h2 className="infoBox__cases">{cases}</h2>
+          <h2 className="infoBox__cases"> + {cases}</h2>
           {/* Total no of cases */}
           <Typography className="infoBox__total" color="textSecondary">
             {total} Total
