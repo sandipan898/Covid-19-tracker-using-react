@@ -79,7 +79,7 @@ function LineGraph({ casesType = "cases" }) {
     };
     fetchData();
   }, [casesType]);
-  console.log("Chart data", data);
+  // console.log("Chart data", data);
 
   return (
     <div>

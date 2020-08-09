@@ -14,15 +14,6 @@ import { sortData } from "./util";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 
-/*
-function RenderDropdown({ countries }) {
-  console.log(countries);
-  const countriesList = countries.map(country => (
-    <MenuItem value="worldwide">{country}</MenuItem>
-  ));
-  return countriesList;
-}*/
-
 // https://disease.sh/v3/covid-19/countries
 
 function App() {
@@ -79,10 +70,10 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setCountry(countryCode);
-
-        // all the data
-        // from the response
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       });
   };
   // console.log("Country deaths total\n", countryInfo.recovered);
