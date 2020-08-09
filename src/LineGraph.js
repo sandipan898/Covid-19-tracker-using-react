@@ -17,7 +17,7 @@ const options = {
     intersect: false,
     callbacks: {
       label: function(tooltipItem, data) {
-        return numeral(tooltipItem.value).format("+0, 0");
+        return numeral(tooltipItem.value).format("+0,0");
       }
     }
   },
@@ -47,53 +47,55 @@ const options = {
   }
 };
 
-const buildChartData = (data, caseType = "cases") => {
-  const charData = [];
+const buildChartData = (data, casesType) => {
+  let chartData = [];
+
   let lastDataPoint;
   for (let date in data.cases) {
     if (lastDataPoint) {
-      const newDataPoint = {
-        y: data[caseType][date] - lastDataPoint
+      let newDataPoint = {
+        x: date,
+        y: data[casesType][date] - lastDataPoint
       };
-      charData.push(newDataPoint);
+      chartData.push(newDataPoint);
     }
-    lastDataPoint = data[caseType][date];
+    lastDataPoint = data[casesType][date];
   }
-  return charData;
+  return chartData;
 };
 
-function LineGraph({ caseType = "cases" }) {
+function LineGraph({ casesType = "cases" }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
+      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
         .then(response => response.json())
         .then(data => {
-          console.log(data);
-          let chartData = buildChartData(data, caseType);
+          // console.log(data);
+          let chartData = buildChartData(data, casesType);
           setData(chartData);
         });
     };
     fetchData();
-  }, []);
+  }, [casesType]);
+  console.log("Chart data", data);
 
   return (
     <div>
       <h1>Chart</h1>
-      {data.length > 0 && (
+      {data?.length > 0 && (
         <Line
           options={options}
           data={{
             datasets: [
               {
-                data: data,
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034"
+                borderColor: "#CC1034",
+                data: data
               }
             ]
           }}
-          options
         />
       )}
     </div>
