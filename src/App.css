@@ -15,12 +15,13 @@ body {
 .app__header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   justify-content: space-between;
 }
 
 .app__left {
   flex: 0.8;
+  width: 70%;
 }
 
 .app__stats {
@@ -28,17 +29,18 @@ body {
   justify-content: space-between;
 }
 
-.app_right {
+.app__right {
   display: flex;
   flex-direction: column;
+  width: 30%;
 }
 
-.app_graph {
+.app__graph {
   flex-grow: 1;
 }
 
-.app_graphTitle {
-  margin-top: 20px;
+.app__graphTitle {
+  margin-top: 10px;
 }
 
 @media (max-width: 900px) {
@@ -50,10 +52,23 @@ body {
   .app__stats {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
   }
+
   .MuiSelect-outlined.MuiSelect-outlined {
     padding-right: 32px;
     width: 220px;
+  }
+
+  .app__left {
+    flex: 0.8;
+    width: 100%;
+  }
+
+  .app__right {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }

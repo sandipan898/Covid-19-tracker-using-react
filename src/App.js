@@ -22,7 +22,7 @@ function App() {
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
@@ -141,16 +141,19 @@ function App() {
           casesType={casesType}
         />
       </div>
-      <Card className="app__right">
-        {/* Table */}
-        {/* Graph */}
-        <CardContent>
-          <h2>Live cases by country</h2>
-          <Table countries={tableData} />
-          <h3 className="app_graphTitle">World wide {casesType}</h3>
-          <LineGraph className="app__graph" casesType={casesType} />
-        </CardContent>
-      </Card>
+      <div className="app__right">
+        <Card>
+          {/* Table */}
+          {/* Graph */}
+          <CardContent>
+            <h2>Live cases by country</h2>
+            <Table countries={tableData} />
+            <h2>Chart</h2>
+            <h3 className="app_graphTitle">Trend in {casesType}</h3>
+            <LineGraph className="app__graph" casesType={casesType} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
