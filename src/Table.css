@@ -18,3 +18,9 @@
 .table tr:nth-of-type(odd) {
   background-color: #dfdede;
 }
+
+@media (max-width: 900px) {
+  .table {
+    /**/
+  }
+}

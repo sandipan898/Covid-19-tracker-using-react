@@ -28,8 +28,32 @@ body {
   justify-content: space-between;
 }
 
+.app_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.app_graph {
+  flex-grow: 1;
+}
+
+.app_graphTitle {
+  margin-top: 20px;
+}
+
 @media (max-width: 900px) {
   .app {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .app__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .MuiSelect-outlined.MuiSelect-outlined {
+    padding-right: 32px;
+    width: 220px;
   }
 }

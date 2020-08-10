@@ -24,6 +24,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
 
   // useEffect = runs a piece of code based on a gibven condition
 
@@ -106,20 +107,27 @@ function App() {
         </div>
 
         <div className="app__stats">
-          {/* InfoBoxes title="CoronaCirus Cases" */}
-          {/* InfoBoxes title="CoronaCirus recoveries" */}
-          {/* InfoBoxes title="CoronaCirus deaths" */}
+          {/* InfoBoxes */}
           <InfoBox
+            isCase
+            active={casesType === "cases"}
+            onClick={e => setCasesType("cases")}
             title="Coronavirus Cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={countryInfo.cases}
           />
           <InfoBox
+            isRecovered
+            active={casesType === "recovered"}
+            onClick={e => setCasesType("recovered")}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={countryInfo.recovered}
           />
           <InfoBox
+            isDeath
+            active={casesType === "deaths"}
+            onClick={e => setCasesType("deaths")}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={countryInfo.deaths}
@@ -130,7 +138,7 @@ function App() {
           center={mapCenter}
           zoom={mapZoom}
           countries={mapCountries}
-          casesType="cases"
+          casesType={casesType}
         />
       </div>
       <Card className="app__right">
@@ -139,8 +147,8 @@ function App() {
         <CardContent>
           <h2>Live cases by country</h2>
           <Table countries={tableData} />
-          <h3>World wide cases</h3>
-          <LineGraph />
+          <h3 className="app_graphTitle">World wide {casesType}</h3>
+          <LineGraph className="app__graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

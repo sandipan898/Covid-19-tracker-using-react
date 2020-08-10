@@ -1,12 +1,51 @@
 .infoBox {
   flex: 1;
+  cursor: pointer;
+  width: 200px;
+  border-radius: 40px !important;
 }
 
 .infoBox:not(:last-child) {
   margin-right: 15px;
 }
 
+.infoBox--selected {
+  border-radius: 40px !important;
+  border-top: 10px solid #e9801e;
+}
+
+.infoBox--red {
+  border: 2px solid #ff0000;
+}
+
+.infoBox--green {
+  border: 2px solid #5ee91e;
+}
+
+.infoBox--blue {
+  border: 2px solid blue;
+}
+
+.infoBox__cases--green {
+  color: #5ee91e !important;
+}
+
+.infoBox__cases--red {
+  color: #ff0000 !important;
+}
+
+.infoBox__cases--blue {
+  color: blue !important;
+}
+
 .infoBox__cases {
+  color: red;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoBox__deaths {
   color: #cc1034;
   font-weight: 600;
   font-size: 1.75rem;
@@ -14,8 +53,22 @@
 }
 
 .infoBox__total {
-  color: #6c757d;
+  color: #484c50;
   font-weight: 700 !important;
-  font-size: 0.8rem !important;
+  font-size: 1rem !important;
   margin-top: 15px !important;
+}
+
+@media (max-width: 900px) {
+  .infoBox {
+    flex: 1;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 40px !important;
+  }
+  .infoBox--selected {
+    width: 203px;
+    border-radius: 40px !important;
+    border-top: 10px solid #e9801e;
+  }
 }

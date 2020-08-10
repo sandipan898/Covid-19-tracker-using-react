@@ -2,6 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
+const colorByCases = {
+  area: {
+    cases: "rgb(0, 0, 255, 0.5)",
+    recovered: "rgb(94, 233, 30, 0.5)",
+    deaths: "rgb(255, 0, 0, 0.5)"
+  },
+  border: {
+    cases: "rgb(0, 0, 255)",
+    recovered: "rgb(94, 233, 30)",
+    deaths: "rgb(255, 0, 0)"
+  }
+};
 const options = {
   legend: {
     display: false
@@ -64,7 +76,7 @@ const buildChartData = (data, casesType) => {
   return chartData;
 };
 
-function LineGraph({ casesType = "cases" }) {
+function LineGraph({ casesType = "cases", ...props }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -82,7 +94,7 @@ function LineGraph({ casesType = "cases" }) {
   // console.log("Chart data", data);
 
   return (
-    <div>
+    <div className={props.className}>
       <h1>Chart</h1>
       {data?.length > 0 && (
         <Line
@@ -90,8 +102,8 @@ function LineGraph({ casesType = "cases" }) {
           data={{
             datasets: [
               {
-                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034",
+                backgroundColor: `${colorByCases["area"][casesType]}`,
+                borderColor: `${colorByCases["border"][casesType]}`,
                 data: data
               }
             ]
