@@ -64,6 +64,8 @@
     flex: 1;
     cursor: pointer;
     width: 200px;
+    height: 120px;
+    margin-bottom: 5px;
     border-radius: 40px !important;
   }
   .infoBox--selected {
