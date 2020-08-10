@@ -150,7 +150,7 @@ function App() {
             <h2>Live cases by country</h2>
             <Table countries={tableData} />
             <h2>Chart</h2>
-            <h3 className="app_graphTitle">Trend in {casesType}</h3>
+            <h3 className="app_graphTitle">World Wide trend in: {casesType}</h3>
             <LineGraph
               className="app__graph"
               data={historicalData}
