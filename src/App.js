@@ -25,6 +25,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
+  const [historicalData, setHistoricalData] = useState([]);
 
   // useEffect = runs a piece of code based on a gibven condition
 
@@ -150,7 +151,11 @@ function App() {
             <Table countries={tableData} />
             <h2>Chart</h2>
             <h3 className="app_graphTitle">Trend in {casesType}</h3>
-            <LineGraph className="app__graph" casesType={casesType} />
+            <LineGraph
+              className="app__graph"
+              data={historicalData}
+              casesType={casesType}
+            />
           </CardContent>
         </Card>
       </div>
